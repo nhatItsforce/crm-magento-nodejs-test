@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connect to Magento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
+  </head>
+  <body class="success-page">
+    
+    <div class="connection-container">
+      <div class="header">
+          <div class="header-title">
+              <h2>Connect to Magento 2 Successfully</h2>
+          </div>
+          <div class="imbee-magento-logos">
+              <img class="logos" style="width: 10rem; height:10rem;" src="/images/imBee-logo.svg" alt="">
+              <div class="logos exchange-logo">
+                <img style="width: 3rem; height:3rem;" src="/images/connected-1.png" alt="">
+              </div>
+              <img class="logos" style="width: 7.5rem; height:10rem;" src="/images/magento-2-logo.svg" alt="">
+          </div>
+      </div>
+      <h3 class="title">The data to be saved is taken from the query parameter:</p>
+      <div class="consumer-data">
+        <table class="consumer-data-table">
+            <tbody>
+                <tr>
+                    <td>Store URL</td>
+                    <td><%= store_url %></td>
+                </tr>
+                <tr>
+                    <td>Consumer Key</td>
+                    <td><%= consumer_key %></td>
+                </tr>
+                <tr>
+                    <td>Consumer Secret</td>
+                    <td><%= consumer_secret %></td>
+                </tr>
+                <tr>
+                    <td>Oauth Token</td>
+                    <td><%= oauth_token %></td>
+                </tr>
+                <tr>
+                    <td>Oauth Token Secret</td>
+                    <td><%= oauth_token_secret %></td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,78 @@
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+
+a {
+  color: #00B7FF;
+}
+
+.connection-container {
+  width: fit-content;
+  margin: auto;
+ 
+}
+
+.header-title {
+  text-align: center;
+}
+
+.imbee-magento-logos {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content:center
+}
+
+.exchange-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logos {
+  margin: 0 10px;
+}
+
+
+#admin_url {
+  width: 28rem;
+  height: 3rem;
+  border: solid 1px #333;
+  border-radius: 5px;
+  padding:  0px 10px;
+  font-size: 1rem;
+}
+
+
+
+.connect-btn {
+  height: 3.1rem;
+  width: 10rem;
+  background-color: rgb(0, 137, 0);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.connect-btn:hover {
+  background-color: rgb(49, 181, 49);
+}
+
+.consumer-data-table{
+  margin: auto;
+  width: 30rem;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.consumer-data-table td {
+  padding: 10px 5px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connect to Magento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    
+    <div class="connection-container">
+      <div class="header">
+          <div class="header-title">
+              <h2>Connect to Magento 2</h2>
+          </div>
+          <div class="imbee-magento-logos">
+              <img class="logos" style="width: 10rem; height:10rem;" src="/images/imBee-logo.svg" alt="">
+              <div class="logos exchange-logo">
+                <img style="width: 3rem; height:3rem;" src="/images/exchange.svg" alt="">
+              </div>
+              <img class="logos" style="width: 7.5rem; height:10rem;" src="/images/magento-2-logo.svg" alt="">
+          </div>
+      </div>
+      <h3 class="title">Input Magento 2 Admin URL:</p>
+      <div class="content-center">
+          <input id="admin_url" type="text" placeholder="Admin URL">
+          <button id="connect_btn" class="connect-btn primary">Connect</button>
+      </div>
+    </div>
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#connect_btn').on('click', function(){
+            let callBackUrl = window.location.origin + "/callback";
+
+            let adminUrl = $('#admin_url').val()
+            if(!isUrlValid(adminUrl)) {
+                alert('Invalid Admin URL')
+                $('#admin_url').select();
+            }else {
+                //admin/imbee/integration?callback=adada&endpoint=asdadad
+                window.location.href = adminUrl.replace(new RegExp("/*$"),'') 
+                + "/imbee/integration/index" 
+                + "?callback=" + callBackUrl + "&endpoint=" + window.location.origin
+            }
+        });
+
+    })
+
+
+    
+    function isUrlValid(url) {
+        return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
+    }
+
+</script>
+</html>
