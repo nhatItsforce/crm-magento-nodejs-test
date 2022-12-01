@@ -1,0 +1,9 @@
+name: trigger build onrender
+on:
+  push:
+    branchs: [master]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl https://api.render.com/deploy/srv-ce4bf2qrrk0djk4o9pp0?key=90m4mIgwwak
