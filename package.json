@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "18.x"
+  },
   "name": "nodejs",
   "version": "1.0.0",
   "description": "Repositório base para projetos NodeJS + ExpressJS",

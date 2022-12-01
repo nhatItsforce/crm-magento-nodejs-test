@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var callbackRouter = require('./routes/callback');
-
+var port = process.env.PORT || 3000;
 var app = express();
 
 // view engine setup
@@ -39,7 +39,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(3000, function(){
-  console.log("SERVER STARTED ON localhost:3000");     
+app.listen(port, function(){
+  console.log(`SERVER STARTED ON ${port}`);     
 })
 
