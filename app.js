@@ -6,6 +6,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var callbackRouter = require('./routes/callback');
+var healthCheckRouter = require('./routes/healthCheck');
+
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -21,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/callback', callbackRouter);
-
+app.use('/health_check', healthCheckRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
