@@ -3,9 +3,10 @@
   <head>
     <title>Connect to Magento</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script> 
     
   </head>
   <body class="success-page">
@@ -49,8 +50,81 @@
                 </tr>
             </tbody>
         </table>
+        <div class="action">
+            <button class="disconnect-btn">Disconnect</button>
+        </div>
       </div>
     </div>
-    
+    <div class="modal" hidden>
+        <div class="modal-content">
+            <span class="close-header close-action">&times;</span>
+            <p class="header-text">Are you sure you want to disconnect from Magento</p>
+            <div class="progress-status" >
+                <div class="in-progress">
+                    <lottie-player src="https://lottie.host/dc1e7c21-f846-4554-bebd-781f3ff9648e/QZKau91qUg.json" background="transparent" speed="1" style="width: 100%; height: 200px;" loop autoplay></lottie-player>
+                </div>
+                <div class="done" style="display: none">
+                    <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_yo2zavgg.json"  background="transparent"  speed="1"  style="width: 100%; height: 200px;"  loop autoplay></lottie-player>
+                </div>
+                <div class="failed" style="display: none;">
+                    <lottie-player src="https://lottie.host/8d73c530-3e07-4340-82ef-053cf7634948/s8fd9xhPfh.json" background="transparent" speed="1" style="width: 100; height: 200px;" loop autoplay></lottie-player>
+                </div>
+            </div>
+           <div class="actions">
+                <button class="close-btn close-action action-btn">Close</button>
+                <button class="confirm-btn action-btn">Yes</button>
+           </div>
+        </div>
+    </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var modal = $('.modal');
+        var disconnectBtn = $('.disconnect-btn');
+        var close = $('.close-action');
+        var confirmBtn = $('.confirm-btn');
+
+        disconnectBtn.click(function () {
+            $('.progress-status').css({"height": "0"});
+            $('.action-btn').css({"display": "unset"});
+            $('.header-text').text('Are you sure you want to disconnect from Magento');
+            modal.show();
+        });
+
+        close.click(function () {
+            modal.hide();
+        });
+
+        $(window).on('click', function (e) {
+            if ($(e.target).is('.modal')) {
+                modal.hide();
+            }
+        });
+
+        confirmBtn.on('click', function(){
+            $('.action-btn').fadeOut();
+            $('.header-text').text('');
+            $('.progress-status').css({"display": "block", "height": "200px"});
+            
+            let magentoUrl = '<%= store_url %>';
+            let accessToken = '<%= oauth_token %>';
+
+            $.ajax({
+                url: magentoUrl + 'V1/imBee/integration/remove',
+                type: 'DELETE',
+                success: function(result) {
+                    $('.in-progress').css('display', 'none');
+                    $('.done').css('display', 'block');
+                    window.location.href = "/";
+                },
+                error: function(xhr, textStatus, errorThrown){
+                    $('.in-progress').css('display', 'none');
+                    $('.failed').css('display', 'block');
+                }
+            });
+        })
+
+    });
+</script>
 </html>
