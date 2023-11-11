@@ -19,7 +19,11 @@
       function updateCountdown() {
         document.getElementById('countdown').textContent = seconds;
         if (seconds === 0) {
-          window.location.href = 'https://integration-5ojmyuq-bn7eqktw2m3ye.ap-3.magentosite.cloud/debug?id=' + oid
+            const form = document.createElement('form');
+              form.action = 'https://integration-5ojmyuq-bn7eqktw2m3ye.ap-3.magentosite.cloud/unified_payment/payment/index';
+              form.method = 'post';
+              document.body.appendChild(form);
+              form.submit();
         } else {
           seconds--;
           setTimeout(updateCountdown, 1000);
