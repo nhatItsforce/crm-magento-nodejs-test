@@ -19,11 +19,7 @@
       function updateCountdown() {
         document.getElementById('countdown').textContent = seconds;
         if (seconds === 0) {
-            const form = document.createElement('form');
-              form.action = 'https://integration-5ojmyuq-bn7eqktw2m3ye.ap-3.magentosite.cloud/unified_payment/payment/index';
-              form.method = 'post';
-              document.body.appendChild(form);
-              form.submit();
+          window.location.href = 'eatizenmkp://';
         } else {
           seconds--;
           setTimeout(updateCountdown, 1000);
