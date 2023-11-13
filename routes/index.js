@@ -15,7 +15,7 @@ router.get('/debug', function(req, res, next) {
 
 
 router.get('/debug2', function(req, res, next) {
-  res.render('debug', { title: 'Debug' });
+  res.render('debug2', { title: 'Debug' });
 });
 
 module.exports = router;
