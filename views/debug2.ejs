@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Connect to Magento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>X Redirecting in <span id="countdown">5</span> seconds...</h1>
+   
+  </body>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    var oid = urlParams.get('id');
+      let seconds = 5;
+      function updateCountdown() {
+        document.getElementById('countdown').textContent = seconds;
+        if (seconds === 0) {
+          const form = document.createElement('form');
+              form.action = 'https://integration-5ojmyuq-bn7eqktw2m3ye.ap-3.magentosite.cloud/unified_payment/payment/index';
+              form.method = 'post';
+              document.body.appendChild(form);
+              form.submit();
+        } else {
+          seconds--;
+          setTimeout(updateCountdown, 1000);
+        }
+      }
+      updateCountdown();
+    </script>
+</html>
