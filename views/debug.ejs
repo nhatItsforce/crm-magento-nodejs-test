@@ -8,18 +8,22 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1>X Redirecting in <span id="countdown">5</span> seconds...</h1>
+    <h1>Redirecting in <span id="countdown">5</span> seconds...</h1>
    
   </body>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script>
     var urlParams = new URLSearchParams(window.location.search);
-    var oid = urlParams.get('id');
+    var type = urlParams.get('type');
       let seconds = 5;
       function updateCountdown() {
         document.getElementById('countdown').textContent = seconds;
         if (seconds === 0) {
-          window.location.href = 'eatizenmkp://';
+          if (type == "uri") {
+            window.location.href = 'eatizenmkp://';
+          } else {
+            window.location.href = 'https://integration-5ojmyuq-bn7eqktw2m3ye.ap-3.magentosite.cloud/';
+          }
         } else {
           seconds--;
           setTimeout(updateCountdown, 1000);
